@@ -1,0 +1,126 @@
+/*--------------------------First Section: Ads--------------------------*/
+/* For PlayStation5.jsx */
+/* .ads-playstation5 {
+  background-image: url("../../../assets/Home/Background.png");
+  background-size: cover;
+} */
+
+.ads-playstation5-content {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.ads-playstation5-btn {
+  text-align: center;
+}
+
+.ads-playstation5-btn a {
+  color: white;
+  padding: 10px 20px 10px 20px;
+  line-height: 80px;
+  border-radius: 0 0 10px 0;
+  box-shadow: var(--box-shadow);
+  background-color: var(--color-primary);
+}
+
+.ads-playstation5-btn a:hover {
+  opacity: 80%;
+}
+
+.ads-playstation5-img {
+  margin: 0 auto;
+}
+/* Expand your senses section */
+.expand-your-senses {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.expand-your-senses p {
+  margin: 0 auto;
+  width: 600px;
+}
+
+.expand-your-senses img {
+  margin: 0 auto;
+  width: 90%;
+}
+/* Play no litmit section */
+.play-no-limit {
+  margin-top: 50px;
+}
+
+.play-no-limit h1 {
+  color: var(--color-primary);
+}
+
+.play-no-limit-container {
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  padding: 50px;
+}
+
+.play-no-limit-first {
+  display: flex;
+}
+
+.play-no-limit-left,
+.play-no-limit-right {
+  width: 50%;
+}
+
+.adaptive-activation {
+  display: flex;
+}
+
+.adaptive-activation-left,
+.adaptive-activation-right {
+  width: 50%;
+}
+
+/* Item List section */
+.let-play {
+  margin: 50px 0;
+  display: flex;
+  width: 100%;
+  padding: 50px;
+}
+
+.let-play-left {
+  width: 40%;
+}
+
+.let-play-right {
+  margin-left: 50px;
+  width: 50%;
+  text-align: justify;
+}
+
+.item-list-img {
+  height: 600px;
+}
+
+.item-list {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+/* Game section */
+.game-home {
+  background-color: #353269;
+}
+
+.game-home-img {
+  height: 500px;
+}
+
+.game-card-img {
+  height: 300px;
+}

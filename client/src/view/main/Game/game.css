@@ -1,0 +1,54 @@
+/* --------------------------Game Ads-------------------------- */
+/* For BestGameAds.jsx */
+.best-game-now-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../../assets/Game/Game_background.jpg);
+  background-size: cover;
+  text-align: center;
+  height: 500px;
+  color: white;
+}
+
+.best-game-now-header h1 {
+  color: white;
+}
+
+.best-game-now {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+/* Left */
+.best-game-now-left {
+  width: 60%;
+}
+
+.best-game-now-left h2 {
+  color: black;
+}
+
+.best-game-now-left p {
+  text-align: justify;
+  margin-right: 20px;
+}
+
+.best-game-now-left button {
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 15px 20px;
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: bold;
+}
+/* Right */
+.best-game-now-right {
+  width: 40%;
+}
+
+.best-game-now-right iframe {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
