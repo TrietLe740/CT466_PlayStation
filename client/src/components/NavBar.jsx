@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartShopping,
+  faSearch,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import LOGO from "../assets/Logo.png";
 
 export default function NavBar() {
@@ -18,10 +22,18 @@ export default function NavBar() {
           <Link to={`/accessory`}>Accessory</Link>
           <Link to={`/news`}>News</Link>
         </div>
-        <button className="user-btn btn">
-          <span>Login</span>
-          <FontAwesomeIcon icon={faUser} />
-        </button>
+        <div className="action">
+          <button className="search-btn btn-border">
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+          <button className="cart-btn btn-border">
+            <FontAwesomeIcon icon={faCartShopping} />
+          </button>
+          <button className="user-btn btn">
+            <span>Login</span>
+            <FontAwesomeIcon icon={faUser} />
+          </button>
+        </div>
       </div>
     </nav>
   );

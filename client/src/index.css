@@ -125,6 +125,18 @@ a:link {
   color: var(--color-bg);
 }
 
+.btn-border {
+  width: max-content;
+  display: inline-block;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border: solid var(--color-primary);
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 2px solid #6d5ddd;
+  transition: var(--transition);
+}
+
 img {
   display: block;
   width: 100%;

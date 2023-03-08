@@ -10,6 +10,8 @@ class HardwareService {
       name: payload.name,
       price: payload.price,
       sale: payload.sale,
+      type: payload.type,
+      img: payload.img,
       more: payload.more,
     };
 
@@ -30,13 +32,25 @@ class HardwareService {
   }
 
   async find(filter) {
-    const cursor = await this.Hardware.find(filter);
-    return await cursor.toArray();
+    return new Promise(async (resolve, reject) => {
+      try {
+        const cursor = await this.Hardware.find();
+        resolve(await cursor.toArray());
+      } catch (error) {
+        reject(null);
+      }
+    });
   }
 
   async findByName(name) {
     return await this.find({
       name: { $regex: new RegExp(name), $options: "i" },
+    });
+  }
+
+  async findById(id) {
+    return await this.Hardware.findOne({
+      _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
     });
   }
 }
