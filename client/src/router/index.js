@@ -5,9 +5,9 @@ import AdminLayout from "../view/layout/AdminLayout";
 
 import HomePage from "../view/main/Home/Home";
 import GamesPage from "../view/main/Game/Game";
-import HardwarePage from "../view/main/Hardware/Hardware";
+import PlayStationPage from "../view/main/PlayStation/PlaySattion";
+import AccessoryPage from "../view/main/Accessory/Accessory";
 import NewsPage from "../view/main/News/News";
-import ShopPage from "../view/main/Shop/Shop";
 
 import LoginPage from "../view/admin/Login/Login";
 import RegisterPage from "../view/admin/Register/Register";
@@ -46,12 +46,12 @@ const router = createBrowserRouter([
         element: <NewsPage />,
       },
       {
-        path: "/hardware",
-        element: <HardwarePage />,
+        path: "/playstation",
+        element: <PlayStationPage />,
       },
       {
-        path: "/shop",
-        element: <ShopPage />,
+        path: "/accessory",
+        element: <AccessoryPage />,
       },
     ],
   },

@@ -1,28 +1,28 @@
 const { ObjectId } = require("mongodb");
 
-class ProductService {
+class HardwareService {
   constructor(client) {
-    this.Product = client.db().collection("products");
+    this.Hardware = client.db().collection("hardware");
   }
 
-  extractProductData(payload) {
-    const product = {
+  extractHardwareData(payload) {
+    const hardware = {
       name: payload.name,
       price: payload.price,
       sale: payload.sale,
       more: payload.more,
     };
 
-    Object.keys(product).forEach(
-      (key) => product[key] === undefined && delete product[key]
+    Object.keys(hardware).forEach(
+      (key) => hardware[key] === undefined && delete hardware[key]
     );
-    return product;
+    return hardware;
   }
 
   async create(payload) {
-    const product = this.extractProductData(payload);
-    const result = await this.Product.findOneAndUpdate(
-      product,
+    const hardware = this.extractHardwareData(payload);
+    const result = await this.Hardware.findOneAndUpdate(
+      hardware,
       { $set: {} },
       { returnDocument: "after", upsert: true }
     );
@@ -30,7 +30,7 @@ class ProductService {
   }
 
   async find(filter) {
-    const cursor = await this.Product.find(filter);
+    const cursor = await this.Hardware.find(filter);
     return await cursor.toArray();
   }
 
@@ -41,4 +41,4 @@ class ProductService {
   }
 }
 
-module.exports = ProductService;
+module.exports = HardwareService;

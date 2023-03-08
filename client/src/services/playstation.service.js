@@ -1,7 +1,7 @@
 import createApiClient from "./api.service";
 
 class PlayStationService {
-  constructor(baseUrl = "/api/products") {
+  constructor(baseUrl = "/api/hardwares") {
     this.api = createApiClient(baseUrl);
   }
   async getAll() {

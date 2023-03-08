@@ -1,11 +1,7 @@
 /*--------------------------First Section: Ads--------------------------*/
 /* For PlayStation5.jsx */
-/* .ads-playstation5 {
-  background-image: url("../../../assets/Home/Background.png");
-  background-size: cover;
-} */
-
 .ads-playstation5-content {
+  margin-top: 120px;
   padding-top: 30px;
   text-align: center;
 }

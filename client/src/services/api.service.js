@@ -1,12 +1,16 @@
 import axios from "axios";
 
-const commonConfig = {
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-};
+const request = axios.create({
+  baseURL: "http://localhost:3001/api",
+});
 
-export default function api(baseURL) {
-  return axios.create({ baseURL, ...commonConfig });
-}
+// const commonConfig = {
+//   headers: {
+//     "Content-Type": "application/json",
+//     Accept: "application/json",
+//   },
+// };
+
+// export default function api(baseURL) {
+//   return axios.create({ baseURL, ...commonConfig });
+// }

@@ -1,33 +1,51 @@
 /* Main header CSS */
-.nav {
+.navbar {
+  width: 100vw;
+  height: 100px;
   padding: 0;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: fixed;
+  align-items: center;
+  z-index: 999;
 }
 
-.navbar {
+.inner {
+  display: flex;
   height: 100px;
+  align-items: center;
+}
+
+.logo {
+  justify-content: left;
+}
+
+.logo-img {
+  width: 100px;
 }
 
 .main-nav {
-  overflow-y: hidden;
   display: flex;
   justify-content: center;
-  height: 100px;
-  align-items: center;
-  background-color: white;
-  position: fixed;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  width: 100vw;
-  z-index: 999;
+}
+
+.user-btn {
+  background-color: var(--color-white);
+  padding: 8px 15px;
+  margin-right: 50px;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: 5px;
+}
+
+.user-btn span {
+  margin-right: 10px;
 }
 
 a {
   color: black;
   font-weight: bold;
   margin: 0 30px 0 30px;
-}
-
-.logo-img {
-  width: 150px;
 }
 
 /* Main footer CSS */
