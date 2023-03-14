@@ -93,7 +93,6 @@ h2 {
 
 a,
 a:link {
-  color: var(--color-black);
   transition: var(--transition);
   text-decoration: none;
 }
@@ -146,6 +145,12 @@ img {
 /* Card */
 .card {
   border-radius: 20px;
+}
+
+.card-text {
+  text-overflow: ellipsis;
+  overflow-y: hidden;
+  max-height: 80px;
 }
 
 /* ====================== */

@@ -1,20 +1,23 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
-export default function HardwareCard() {
+import "../../view/main/PlayStation/playstation.css";
+
+export default function HardwareCard({ hardware }) {
   return (
-    <div className="post-card card col-4 m-0">
-      <img
-        src="https://media.direct.playstation.com/is/image/sierialto/GOWR-Bundle-Hero-US?$FourColumn_Large$"
-        className="card-img-top  product-card-img"
-        alt="..."
-      />
+    <div className="hardware-card card col-4 m-0">
+      <Link to={`/hardware/`}>
+        <img
+          src={hardware.img}
+          className="card-img-top product-card-img"
+          alt="..."
+        />
+      </Link>
       <div className="card-body">
-        <h5 className="card-title text-center">
-          PlayStation®5 Console – God of War™ Ragnarok
-        </h5>
-        <a href="/#" className="btn btn-primary">
-          Add <i class="fa-solid fa-cart-shopping"></i>
-        </a>
+        <h5 className="card-title text-center">{hardware.name}</h5>
+        <Link to={`/product/${hardware.type}/${hardware._id}`} className="btn">
+          Find out more
+        </Link>
+        <span className="hardware-price">{hardware.price}$</span>
       </div>
     </div>
   );

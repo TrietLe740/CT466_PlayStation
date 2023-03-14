@@ -1,7 +1,7 @@
 import createApiClient from "./api.service";
 
-export default class PlayStationService {
-  constructor(baseUrl = "http://localhost:3001/api/hardwares") {
+export default class GamesService {
+  constructor(baseUrl = "http://localhost:3001/api/games") {
     this.api = createApiClient(baseUrl);
   }
 

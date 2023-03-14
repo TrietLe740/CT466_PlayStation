@@ -1,44 +1,36 @@
-// import GameCard from "../../../components/Game/GameCard";
-import React, { Fragment } from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import React, { Fragment, useEffect, useState } from "react";
+
 import BestGameAds from "../../../components/Game/BestGameAds";
 import GameCard from "../../../components/Game/GameCard";
+import gameService from "../../../services/game.service";
 
 import "./game.css";
 
 export default function Game() {
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 1024 },
-      items: 4,
-    },
-    desktop: {
-      breakpoint: { max: 1024, min: 800 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 800, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
+  const [gameList, setGameList] = useState();
+
+  const gameServ = new gameService();
+
+  async function getProduct() {
+    const products = await gameServ.getAll();
+    setGameList(products);
+  }
+
+  useEffect(() => {
+    getProduct();
+  });
+
   return (
     <Fragment>
       <BestGameAds />
-      <Carousel responsive={responsive}>
-        <GameCard />
-        <GameCard />
-        <GameCard />
-        <GameCard />
-        <GameCard />
-        <GameCard />
-        <GameCard />
-        <GameCard />
-      </Carousel>
+      <hr />
+      <h4 className="ml-5">Game Library</h4>
+      <div className="row">
+        {gameList &&
+          gameList.map((value, index) => {
+            return <GameCard key={index} game={value} />;
+          })}
+      </div>
     </Fragment>
   );
 }

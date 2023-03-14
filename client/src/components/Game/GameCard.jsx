@@ -1,22 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function GameCard() {
+export default function GameCard({ game }) {
   return (
-    <div className="card">
-      <img
-        src="https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png"
-        className="card-img-top"
-        alt="..."
-      />
+    <div className="card col-3">
+      <img src={game.img} className="card-img-top" alt="..." />
       <div className="card-body">
-        <h5 className="card-title">God of war</h5>
-        <p className="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="/#" className="btn btn-primary">
+        <h5 className="card-title">{game.name}</h5>
+        <p className="card-text">{game.discription}</p>
+        <Link
+          to={`/product/${game.type}/${game._id}`}
+          className="btn btn-primary"
+        >
           Find out more
-        </a>
+        </Link>
       </div>
     </div>
   );

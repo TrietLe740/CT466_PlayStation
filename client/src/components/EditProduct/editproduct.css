@@ -1,0 +1,9 @@
+.disable-form input {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.disable-form button {
+  pointer-events: none;
+  background-color: red;
+}

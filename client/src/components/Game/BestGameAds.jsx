@@ -24,9 +24,9 @@ export default function BestGameAds() {
             height="315"
             src="https://www.youtube.com/embed/EE-4GvjKcfs"
             title="YouTube video player"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       </div>
@@ -44,9 +44,9 @@ export default function BestGameAds() {
             height="315"
             src="https://www.youtube.com/embed/HhZmybfPEvk"
             title="YouTube video player"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
         <div className="best-game-now-left col-5">

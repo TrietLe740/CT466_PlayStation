@@ -23,12 +23,12 @@ export default function NavBar() {
           <Link to={`/news`}>News</Link>
         </div>
         <div className="action">
-          <button className="search-btn btn-border">
+          <Link to={`/search`} className="search-btn btn-border">
             <FontAwesomeIcon icon={faSearch} />
-          </button>
-          <button className="cart-btn btn-border">
+          </Link>
+          <Link to={`/cart`} className="cart-btn btn-border">
             <FontAwesomeIcon icon={faCartShopping} />
-          </button>
+          </Link>
           <button className="user-btn btn">
             <span>Login</span>
             <FontAwesomeIcon icon={faUser} />

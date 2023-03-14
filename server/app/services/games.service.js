@@ -1,12 +1,12 @@
 const { ObjectId } = require("mongodb");
 
-class HardwareService {
+class GamesService {
   constructor(client) {
-    this.Hardware = client.db().collection("hardware");
+    this.Game = client.db().collection("games");
   }
 
-  extractHardwareData(payload) {
-    const hardware = {
+  extractGamesData(payload) {
+    const game = {
       name: payload.name,
       price: payload.price,
       sale: payload.sale,
@@ -15,16 +15,16 @@ class HardwareService {
       more: payload.more,
     };
 
-    Object.keys(hardware).forEach(
-      (key) => hardware[key] === undefined && delete hardware[key]
+    Object.keys(game).forEach(
+      (key) => game[key] === undefined && delete game[key]
     );
-    return hardware;
+    return game;
   }
 
   async create(payload) {
-    const hardware = this.extractHardwareData(payload);
-    const result = await this.Hardware.findOneAndUpdate(
-      hardware,
+    const game = this.extractGameData(payload);
+    const result = await this.Game.findOneAndUpdate(
+      game,
       { $set: {} },
       { returnDocument: "after", upsert: true }
     );
@@ -34,7 +34,7 @@ class HardwareService {
   async find(filter) {
     return new Promise(async (resolve, reject) => {
       try {
-        const cursor = await this.Hardware.find();
+        const cursor = await this.Game.find();
         resolve(await cursor.toArray());
       } catch (error) {
         reject(null);
@@ -49,22 +49,22 @@ class HardwareService {
   }
 
   async findById(id) {
-    return await this.Hardware.findOne({
+    return await this.Game.findOne({
       _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
     });
   }
 
   async update(id, payload) {
-    const hardware = this.extractHardwareData(payload);
-    const result = await this.Hardware.findOneAndUpdate(
+    const game = this.extractGamesData(payload);
+    const result = await this.Game.findOneAndUpdate(
       {
         _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
       },
-      { $set: hardware },
+      { $set: game },
       { returnDocument: "after" }
-    ); //
+    );
     return result.value;
   }
 }
 
-module.exports = HardwareService;
+module.exports = GamesService;

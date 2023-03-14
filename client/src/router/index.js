@@ -9,8 +9,12 @@ import PlayStationPage from "../view/main/PlayStation/PlaySattion";
 import AccessoryPage from "../view/main/Accessory/Accessory";
 import NewsPage from "../view/main/News/News";
 
+import SearchPage from "../view/main/Search/Search";
+
 import LoginPage from "../view/admin/Login/Login";
 import RegisterPage from "../view/admin/Register/Register";
+
+import ProductDetailPage from "../view/main/ProductDetail/ProductDetail";
 
 import NotFound from "../view/main/NotFound/NotFound";
 
@@ -42,16 +46,24 @@ const router = createBrowserRouter([
         element: <GamesPage />,
       },
       {
-        path: "/news",
-        element: <NewsPage />,
-      },
-      {
         path: "/playstation",
         element: <PlayStationPage />,
       },
       {
         path: "/accessory",
         element: <AccessoryPage />,
+      },
+      {
+        path: "/news",
+        element: <NewsPage />,
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
+      },
+      {
+        path: "/product/:type/:id",
+        element: <ProductDetailPage />,
       },
     ],
   },

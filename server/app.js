@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const hardwareRouter = require("./app/routers/route");
+const router = require("./app/routers/route");
 
 const ApiError = require("./app/api-error");
 
@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("combined"));
-app.use("/api/hardwares", hardwareRouter);
+app.use("/api", router);
 
 app.get("/", (req, res) => {
   res.json({ msg: "Welcome to my app." });

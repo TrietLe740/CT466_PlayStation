@@ -1,14 +1,13 @@
-const HardwareService = require("../services/hardware.service");
+const GamesService = require("../services/games.service");
 const MongoDB = require("../utils/mongodb.util");
 const ApiError = require("../api-error");
 
-// Định nghĩa product controller
 exports.create = async (req, res, next) => {
   if (!req.body?.name) return next(new ApiError(400, `Name can't be empty!`));
 
   try {
-    const hardwareService = new HardwareService(MongoDB.client);
-    const document = await hardwareService.create(req.body);
+    const gameService = new GamesService(MongoDB.client);
+    const document = await gameService.create(req.body);
     return res.send(document);
   } catch (error) {
     return next(
@@ -20,12 +19,12 @@ exports.create = async (req, res, next) => {
 exports.findAll = async (req, res, next) => {
   let documents = [];
   try {
-    const hardwareService = new HardwareService(MongoDB.client);
+    const gameService = new GamesService(MongoDB.client);
     const name = req.query;
     if (name) {
-      documents = await hardwareService.findByName(name);
+      documents = await gameService.findByName(name);
     } else {
-      documents = await hardwareService.find();
+      documents = await gameService.find();
     }
   } catch (error) {
     console.log(error);
@@ -38,8 +37,8 @@ exports.findAll = async (req, res, next) => {
 
 exports.findOne = async (req, res, next) => {
   try {
-    const hardwareService = new HardwareService(MongoDB.client);
-    const document = await hardwareService.findById(req.params.id);
+    const gameService = new GamesService(MongoDB.client);
+    const document = await gameService.findById(req.params.id);
     if (!document) {
       return next(new ApiError(404, "Product not found"));
     }
@@ -57,8 +56,8 @@ exports.update = async (req, res, next) => {
   }
 
   try {
-    const hardwareService = new HardwareService(MongoDB.client);
-    const document = await hardwareService.update(req.params.id, req.body);
+    const gameService = new GamesService(MongoDB.client);
+    const document = await gameService.update(req.params.id, req.body);
     if (!document) {
       return next(new ApiError(404, "Product not found"));
     }
@@ -72,8 +71,8 @@ exports.update = async (req, res, next) => {
 
 exports.delete = async (req, res, next) => {
   try {
-    const hardwareService = new HardwareService(MongoDB.client);
-    const document = await hardwareService.delete(req.params.id);
+    const gameService = new GamesService(MongoDB.client);
+    const document = await gameService.delete(req.params.id);
     if (!document) {
       return next(new ApiError(404, "Product not found"));
     }

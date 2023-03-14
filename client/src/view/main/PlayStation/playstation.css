@@ -1,0 +1,10 @@
+.hardware-container {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hardware-price {
+  margin-left: 10px;
+  font-weight: bold;
+}

@@ -1,0 +1,35 @@
+.form-container {
+  height: 1000px;
+}
+
+.form-search {
+  margin-top: 200px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.form-search input {
+  width: 400px;
+  padding: 10px 20px;
+}
+
+.form-search-container {
+  border: solid 2px var(--color-primary);
+}
+
+.form-search-clear {
+  background: none;
+}
+
+.form-search-icon-xmark {
+  margin-right: 10px;
+  color: rgb(151, 151, 151);
+}
+
+.form-search-btn {
+  padding: 10px 16px;
+  border: solid 2px var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
