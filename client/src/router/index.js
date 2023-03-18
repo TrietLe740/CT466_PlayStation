@@ -10,6 +10,7 @@ import AccessoryPage from "../view/main/Accessory/Accessory";
 import NewsPage from "../view/main/News/News";
 
 import SearchPage from "../view/main/Search/Search";
+import CartPage from "../view/main/Cart/Cart";
 
 import LoginPage from "../view/admin/Login/Login";
 import RegisterPage from "../view/admin/Register/Register";
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
       {
         path: "/product/:type/:id",
