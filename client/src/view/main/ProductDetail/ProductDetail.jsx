@@ -46,12 +46,12 @@ function ProductDetail() {
       if (index !== -1) {
         return v.map((e) => {
           if (e.id === product._id) {
-            console.log("Quantity: ", e.quantity);
-            console.log("Quantity: ", e.quantity + 1 > 5);
-            console.log(e.quantity + 1);
+            // console.log("Quantity: ", e.quantity);
+            // console.log("Quantity: ", e.quantity + 1 > 5);
+            // console.log(e.quantity + 1);
             const quantity =
               parseInt(e.quantity) + 1 > 5 ? 5 : parseInt(e.quantity) + 1;
-            console.log(quantity);
+            // console.log(quantity);
             return { ...e, quantity };
           }
           return e;

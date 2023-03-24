@@ -11,6 +11,5 @@ root.render(
     <Provider>
       <App />
     </Provider>
-  </React.StrictMode>,
-  document.querySelector("#root")
+  </React.StrictMode>
 );

@@ -16,7 +16,8 @@ export default function Hardware() {
     }
 
     getProduct();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="hardware-container">

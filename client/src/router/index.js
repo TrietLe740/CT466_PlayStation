@@ -14,6 +14,7 @@ import CartPage from "../view/main/Cart/Cart";
 
 import LoginPage from "../view/admin/Login/Login";
 import RegisterPage from "../view/admin/Register/Register";
+import AdminPage from "../view/admin/AdminDashboard/AdminDashboard";
 
 import ProductDetailPage from "../view/main/ProductDetail/ProductDetail";
 
@@ -22,6 +23,15 @@ import NotFound from "../view/main/NotFound/NotFound";
 const router = createBrowserRouter([
   {
     element: <AdminLayout />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: "/admin",
+        element: <AdminPage />,
+      },
+    ],
+  },
+  {
     errorElement: <NotFound />,
     children: [
       {

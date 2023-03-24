@@ -153,6 +153,10 @@ img {
   max-height: 80px;
 }
 
+.warning {
+  color: #d53b00;
+}
+
 /* ====================== */
 @media screen and (max-width: 1024px) {
   .container {

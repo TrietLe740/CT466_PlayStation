@@ -57,7 +57,7 @@ function ItemCard({ value }) {
       </td>
       <td>
         <div className="d-flex">
-          <span className="text-muted">{value.price * value.quantity}</span>
+          <span className="text-muted">{value.price * value.quantity}$</span>
         </div>
       </td>
       <td>

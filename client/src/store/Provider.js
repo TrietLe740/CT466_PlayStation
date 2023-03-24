@@ -5,6 +5,11 @@ function Provider({ children }) {
   const [cart, setCart] = useState(
     JSON.parse(window.localStorage.getItem("cartItem")) || []
   );
+  const [auth, setAuth] = useState(
+    JSON.parse(window.localStorage.getItem("auth")) || {}
+  );
+
+  const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
     window.localStorage.setItem("cartItem", JSON.stringify(cart) || []);
@@ -12,16 +17,25 @@ function Provider({ children }) {
 
   useEffect(() => {
     window.addEventListener("storage", () => {
-      const a = JSON.parse(window.localStorage.getItem("cartItem"));
+      const dataOtherTab = JSON.parse(window.localStorage.getItem("cartItem"));
 
-      if (a) {
-        setCart(a);
+      if (dataOtherTab) {
+        setCart(dataOtherTab);
       }
     });
   }, []);
 
+  useEffect(() => {
+    window.localStorage.setItem("auth", JSON.stringify(auth) || "");
+    setIsLogin(!!Object.keys(auth).length);
+  }, [auth]);
+
   return (
-    <Context.Provider value={{ cart, setCart }}>{children}</Context.Provider>
+    <Context.Provider
+      value={{ cart, setCart, auth, setAuth, isLogin, setIsLogin }}
+    >
+      {children}
+    </Context.Provider>
   );
 }
 
