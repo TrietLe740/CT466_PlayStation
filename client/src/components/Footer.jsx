@@ -9,7 +9,7 @@ export default function Footer() {
         <h2 className="name-store">TLStore</h2>
       </div>
       <div className="footer-right">
-        <ul>
+        <ul className="ml-5">
           <li>
             <a href="/#">Support</a>
           </li>
@@ -23,7 +23,7 @@ export default function Footer() {
             <a href="/#">PlayStation and the environment</a>
           </li>
         </ul>
-        <ul>
+        <ul className="ml-5">
           <li>
             <a href="/#">PSN terms of service</a>
           </li>
@@ -37,7 +37,7 @@ export default function Footer() {
             <a href="/#">Press release</a>
           </li>
         </ul>
-        <ul>
+        <ul className="ml-5">
           <li>
             <a href="/#">Facebook</a>
           </li>

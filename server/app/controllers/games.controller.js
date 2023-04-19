@@ -1,6 +1,6 @@
 const GamesService = require("../services/games.service");
 const MongoDB = require("../utils/mongodb.util");
-const ApiError = require("../api-error");
+const ApiError = require("../api-error").default;
 
 exports.create = async (req, res, next) => {
   if (!req.body?.name) return next(new ApiError(400, `Name can't be empty!`));

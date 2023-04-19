@@ -4,10 +4,14 @@ import ItemCard from "../../../components/Cart/ItemCard";
 import "./cart.css";
 
 import InvoiceService from "../../../services/invoice.service";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
-  const { cart } = useContext(Context);
+  const invoiceServ = new InvoiceService();
+
   const [totalAmount, setTotalAmount] = useState(0);
+
+  const { cart, setCart, auth } = useContext(Context);
 
   useEffect(() => {
     let total = 0;
@@ -17,6 +21,39 @@ function Cart() {
     console.log(cart);
     setTotalAmount(total);
   }, [cart]);
+
+  const navigate = useNavigate();
+
+  const handleCheckout = async (e) => {
+    e.preventDefault();
+    try {
+      if (auth._id !== undefined) {
+        if (cart.length !== 0) {
+          await invoiceServ.create({
+            user_id: auth._id,
+            email: auth.email,
+            name: auth.name,
+            cartItems: cart,
+            totalAmount,
+          });
+          // console.log({
+          //   user_id: auth._id,
+          //   email: auth.email,
+          //   name: auth.name,
+          //   cartItems: cart,
+          //   totalAmount,
+          // });
+          setCart([]);
+        }
+      } else {
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {}, []);
 
   return (
     <div className="cart-container">
@@ -35,17 +72,14 @@ function Cart() {
             </div>
           </div>
         </div>
-        <form className="col-4 payment-summary">
+        <form
+          className="col-4 payment-summary"
+          onSubmit={(e) => {
+            handleCheckout(e);
+          }}
+        >
           <p className="fw-bold pt-lg-0 pt-4 mt-3 ml-4">Payment Summary</p>
           <div className="card px-md-3 px-2 pt-4">
-            {/* <div className="d-flex justify-content-between pb-3">
-              <small className="text-muted">Transaction code</small>
-              <p className="">VC115665</p>
-            </div>
-            <div className="d-flex justify-content-between b-bottom">
-              <input type="text" className="p-2" placeholder="COUPON CODE" />
-              <button className="btn">Apply</button>
-            </div> */}
             <div className="d-flex flex-column">
               <div className="d-flex justify-content-between py-3">
                 <small className="text-muted">Order Summary</small>

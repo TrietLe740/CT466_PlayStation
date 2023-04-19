@@ -1,6 +1,6 @@
 const HardwareService = require("../services/hardware.service");
 const MongoDB = require("../utils/mongodb.util");
-const ApiError = require("../api-error");
+const ApiError = require("../api-error").default;
 
 // Định nghĩa product controller
 exports.create = async (req, res, next) => {
@@ -49,6 +49,24 @@ exports.findOne = async (req, res, next) => {
       new ApiError(500, `Error retrieving product with id=${req.params.id}`)
     );
   }
+};
+
+exports.findAccessory = async (req, res, next) => {
+  try {
+    const hardwareService = new HardwareService(MongoDB.client);
+    const document = await hardwareService.fi;
+    if (name) {
+      documents = await hardwareService.findByName(name);
+    } else {
+      documents = await hardwareService.find();
+    }
+  } catch (error) {
+    console.log(error);
+    return next(
+      new ApiError(500, "An error occured while retrieving hardware")
+    );
+  }
+  return res.send(documents);
 };
 
 exports.update = async (req, res, next) => {

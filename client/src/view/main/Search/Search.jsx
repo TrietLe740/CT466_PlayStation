@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import Tippy from "@tippyjs/react/headless";
-import "tippy.js/dist/tippy.css";
 import SearchItem from "../../../components/Search/SearchResult";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,39 +11,26 @@ function Search() {
   const [searchResult, setSearchResult] = useState([]);
 
   return (
-    // <div className="form-search">
-    //   <Input.Search placeholder="Search..." enterButton />
-    // </div>
-
     <div className="container form-container">
-      <Tippy
-        interactive={true}
-        visible={searchResult.length > 0}
-        render={(attrs) => (
-          <div className="search-result" tabIndex="-1" {...attrs}>
-            <SearchItem />
-          </div>
-        )}
-        className="form-search-container"
-      >
-        <input
-          value={searchValue}
-          onChange={(e) => searchValue(e.target.value)}
-          type="text"
-          placeholder="Search..."
-        />
-        {!!searchValue && (
+      <form action="" className="form-search">
+        <div className="form-search-container">
+          <input
+            value={searchValue}
+            onChange={(e) => searchValue(e.target.value)}
+            type="text"
+            placeholder="Search..."
+          />
           <button className="form-search-clear">
             <FontAwesomeIcon
               className="form-search-icon-xmark"
               icon={faCircleXmark}
             />
           </button>
-        )}
-        <button className="form-search-btn">
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
-      </Tippy>
+          <button className="form-search-btn">
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

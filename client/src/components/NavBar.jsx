@@ -12,9 +12,9 @@ import Context from "../store/Context";
 export default function NavBar() {
   const { isLogin, setIsLogin, setAuth } = useContext(Context);
 
-  const handleLogout = async (data) => {
+  const handleLogout = async () => {
     setIsLogin(false);
-    setAuth("");
+    setAuth({});
   };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function NavBar() {
       document.querySelector(".log-btn").innerHTML = "Login";
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isLogin]);
 
   return (
     <nav className="navbar nav">
@@ -50,10 +50,6 @@ export default function NavBar() {
             <span className="log-btn"></span>
             <FontAwesomeIcon icon={faUser} />
           </Link>
-          {/* <button className="user-btn btn" onClick={setAuth({})}>
-            <span>Logout</span>
-            <FontAwesomeIcon icon={faUser} />
-          </button> */}
         </div>
       </div>
     </nav>

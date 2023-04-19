@@ -27,12 +27,11 @@ function Login() {
     try {
       const loginCheck = await authServ.login(data);
       setAuth(loginCheck.data[0]);
-      console.log(loginCheck.data[0]);
     } catch (error) {
-      if (error.response.status === 403) {
+      if (error.response?.status === 403) {
         setPwdError(error.response.data.message);
       }
-      if (error.response.status === 404) {
+      if (error.response?.status === 404) {
         setEmailError(error.response.data.message);
       }
 

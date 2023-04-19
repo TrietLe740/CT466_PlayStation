@@ -1,7 +1,7 @@
 import createApiClient from "./api.service";
 
 export default class InvoiceService {
-  constructor(baseUrl = "/api/products/invoice") {
+  constructor(baseUrl = "/api/invoice") {
     this.api = createApiClient(baseUrl);
   }
 

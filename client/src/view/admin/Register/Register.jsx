@@ -159,7 +159,7 @@ function Register() {
           onClose={closeModal}
           modal
         >
-          {/* {(close) => (
+          {(close) => (
             <div className="popup-register">
               <div>
                 <FontAwesomeIcon icon={faCircleCheck} />
@@ -171,7 +171,7 @@ function Register() {
                 </Link>
               </p>
             </div>
-          )} */}
+          )}
         </Popup>
       </form>
     </div>
