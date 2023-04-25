@@ -30,10 +30,20 @@ router
   .put(games.update)
   .delete(games.delete);
 
-router.post("/invoice", invoice.create);
+router.route("/invoices").get(invoice.findAll).post(invoice.create);
+
+router
+  .route("/invoices/:id")
+  .get(invoice.findOne)
+  .put(invoice.update)
+  .delete(invoice.delete);
 
 router.post("/user/login", auth.login);
 
+router.post("/user/adminLogin", auth.adminLogin);
+
 router.post("/user/register", auth.register);
+
+router.get("/user/findAllUser", auth.findAll);
 
 module.exports = router;

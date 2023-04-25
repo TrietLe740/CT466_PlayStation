@@ -9,7 +9,15 @@ export default class AuthService {
     return await this.api.post(`/login`, data);
   }
 
+  async adminLogin(data) {
+    return await this.api.post(`/adminLogin`, data);
+  }
+
   async register(data) {
     return await this.api.post(`/register`, data);
+  }
+
+  async getAll() {
+    return (await this.api.get("/findAllUser")).data;
   }
 }

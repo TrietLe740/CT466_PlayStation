@@ -1,0 +1,15 @@
+.login-container {
+  margin: 100px auto;
+  max-width: 500px;
+  background-color: var(--color-white);
+  padding: 50px 30px;
+  border-radius: 20px;
+}
+
+.nav-pills .nav-link.active {
+  background-color: var(--color-primary);
+}
+
+.login-container a {
+  color: var(--color-primary);
+}

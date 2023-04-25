@@ -27,7 +27,7 @@ function Cart() {
   const handleCheckout = async (e) => {
     e.preventDefault();
     try {
-      if (auth._id !== undefined) {
+      if (auth !== null) {
         if (cart.length !== 0) {
           await invoiceServ.create({
             user_id: auth._id,
@@ -36,16 +36,11 @@ function Cart() {
             cartItems: cart,
             totalAmount,
           });
-          // console.log({
-          //   user_id: auth._id,
-          //   email: auth.email,
-          //   name: auth.name,
-          //   cartItems: cart,
-          //   totalAmount,
-          // });
           setCart([]);
+          alert("Checkout success!");
         }
       } else {
+        alert("You need to login!");
         navigate("/login");
       }
     } catch (error) {

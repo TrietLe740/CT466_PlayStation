@@ -12,6 +12,7 @@ class InvoiceService {
       email: payload.email,
       cartItems: payload.cartItems.length ? payload.cartItems : [],
       totalAmount: payload.totalAmount,
+      status: payload.status || "To Pay",
     };
 
     Object.keys(invoice).forEach(
@@ -54,14 +55,21 @@ class InvoiceService {
   }
 
   async update(id, payload) {
-    const game = this.extractInvoicesData(payload);
+    const invoice = this.extractInvoiceData(payload);
     const result = await this.Invoice.findOneAndUpdate(
       {
         _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
       },
-      { $set: game },
+      { $set: invoice },
       { returnDocument: "after" }
     );
+    return result.value;
+  }
+
+  async delete(id) {
+    const result = await this.Invoice.findOneAndDelete({
+      _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
+    });
     return result.value;
   }
 }

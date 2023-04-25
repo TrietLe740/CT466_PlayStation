@@ -12,7 +12,13 @@ export default function Hardware() {
   useEffect(() => {
     async function getProduct() {
       const products = await playstationServ.getAll();
-      setHardwareList(products);
+      const hardwares = [];
+      for (let i = 0; i < products.length; i++) {
+        if (products[i].type === "hardware") {
+          hardwares[i] = products[i];
+        }
+      }
+      setHardwareList(hardwares);
     }
 
     getProduct();

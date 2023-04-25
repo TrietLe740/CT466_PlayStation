@@ -1,28 +1,67 @@
+import { Link } from "react-router-dom";
+import "./AdminDashboard.css";
+import playstationService from "../../../services/playstation.service";
+import { useEffect, useState } from "react";
+
 function AdminDashboard() {
+  const [hardwareList, setHardwareList] = useState();
+
+  const hardwareServ = new playstationService();
+
+  useEffect(() => {
+    async function getProduct() {
+      const products = await hardwareServ.getAll();
+      const hardwares = [];
+      for (let i = 0; i < products.length; i++) {
+        hardwares[i] = products[i];
+      }
+      setHardwareList(hardwares);
+    }
+
+    getProduct();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="dashboard main-content">
       <div className="admin-card-icon">
         <div className="admin-card-icon-body">
-          <div className="admin-card-icon-i">
-            <i className="fa fa-users"></i>
-          </div>
-          <h3>Người dùng</h3>
+          <Link to={`/admin/users`}>
+            <div className="admin-card-icon-i">
+              <i className="fa fa-users"></i>
+            </div>
+            <h3>Users</h3>
+          </Link>
         </div>
       </div>
       <div className="admin-card-icon">
         <div className="admin-card-icon-body">
-          <div className="admin-card-icon-i">
-            <i className="fa fa-shopping-bag"></i>
-          </div>
-          <h3>Sản phẩm</h3>
+          <Link to={`/admin/hardwares`}>
+            <div className="admin-card-icon-i">
+              <i className="fa fa-shopping-bag"></i>
+            </div>
+            <h3>Hardwares</h3>
+          </Link>
         </div>
       </div>
       <div className="admin-card-icon">
         <div className="admin-card-icon-body">
-          <div className="admin-card-icon-i">
-            <i className="fa-solid fa-cart-shopping"></i>
-          </div>
-          <h3>Đơn hàng</h3>
+          <Link to={`/admin/games`}>
+            <div className="admin-card-icon-i">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <h3>Games</h3>
+          </Link>
+        </div>
+      </div>
+      <div className="admin-card-icon">
+        <div className="admin-card-icon-body">
+          <Link to={`/admin/invoices`}>
+            <div className="admin-card-icon-i">
+              <i className="fa-solid fa-cart-shopping"></i>
+            </div>
+            <h3>Invoices</h3>
+          </Link>
         </div>
       </div>
       <div className="table">
@@ -34,11 +73,33 @@ function AdminDashboard() {
             <table>
               <thead>
                 <tr className="text-center">
-                  <th>Tên sản phẩm</th>
-                  <th>Giá bán</th>
-                  <th>Giảm giá</th>
-                  <th>Thao tác</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Sale</th>
+                  <th>Operation</th>
                 </tr>
+                {hardwareList &&
+                  hardwareList.map((value, index) => {
+                    return (
+                      <tr key={index} hardware={value}>
+                        <td>{value.name}</td>
+                        <td>{value.price}$</td>
+                        <td>{value.sale}</td>
+                        <td>
+                          <div className="btn-group">
+                            <button>
+                              <Link to={`/admin/products/:id`}>
+                                <i className="fa fa-pencil"></i>
+                              </Link>
+                            </button>
+                            <button>
+                              <i className="fa fa-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </thead>
             </table>
           </div>
@@ -49,22 +110,19 @@ function AdminDashboard() {
           <div className="icon">
             <i className="fa fa-users"></i>
           </div>
-          <div className="num">1000</div>
-          <h3>Users</h3>
+          <div className="num">1000 User</div>
         </div>
         <div className="admin-card">
           <div className="icon">
             <i className="fa fa-copy"></i>
           </div>
-          <div className="num">3400</div>
-          <h3>Projects</h3>
+          <div className="num">3400 Product</div>
         </div>
         <div className="admin-card">
           <div className="icon">
             <i className="fa fa-shopping-bag"></i>
           </div>
-          <div className="num">2000</div>
-          <h3>Products</h3>
+          <div className="num">2000 Invoice</div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,21 +10,12 @@ import LOGO from "../assets/Logo.png";
 import Context from "../store/Context";
 
 export default function NavBar() {
-  const { isLogin, setIsLogin, setAuth } = useContext(Context);
+  const { setIsLogin, auth, setAuth } = useContext(Context);
 
   const handleLogout = async () => {
     setIsLogin(false);
-    setAuth({});
+    setAuth(null);
   };
-
-  useEffect(() => {
-    if (isLogin) {
-      document.querySelector(".log-btn").innerHTML = "Logout";
-    } else {
-      document.querySelector(".log-btn").innerHTML = "Login";
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLogin]);
 
   return (
     <nav className="navbar nav">
@@ -36,7 +27,7 @@ export default function NavBar() {
           <Link to={`/`}>Home</Link>
           <Link to={`/games`}>Games</Link>
           <Link to={`/playstation`}>PlayStation</Link>
-          <Link to={`/accessory`}>Accessory</Link>
+          <Link to={`/accessory`}>Accessories</Link>
           <Link to={`/news`}>News</Link>
         </div>
         <div className="action">
@@ -47,7 +38,7 @@ export default function NavBar() {
             <FontAwesomeIcon icon={faCartShopping} />
           </Link>
           <Link to={`/login`} className="user-btn btn" onClick={handleLogout}>
-            <span className="log-btn"></span>
+            <span className="log-btn">{auth ? "Logout" : "Login"}</span>
             <FontAwesomeIcon icon={faUser} />
           </Link>
         </div>

@@ -8,11 +8,12 @@ class HardwareService {
   extractHardwareData(payload) {
     const hardware = {
       name: payload.name,
-      price: payload.price,
-      sale: payload.sale,
-      type: payload.type,
+      price: parseInt(payload.price) || 0,
+      sale: parseInt(payload.sale) || 0,
+      type: payload.type || "hardware",
       img: payload.img,
-      more: payload.more,
+      more: payload.more || {},
+      description: payload.description,
     };
 
     Object.keys(hardware).forEach(
@@ -60,9 +61,18 @@ class HardwareService {
       {
         _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
       },
-      { $set: hardware },
+      {
+        $set: hardware,
+      },
       { returnDocument: "after" }
     ); //
+    return result.value;
+  }
+
+  async delete(id) {
+    const result = await this.Hardware.findOneAndDelete({
+      _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
+    });
     return result.value;
   }
 }

@@ -4,7 +4,7 @@ import "./news.css";
 
 export default function News() {
   return (
-    <div className="">
+    <div className="news-container">
       <div className="news-header">
         <img
           src="https://blog.playstation.com/tachyon/2023/02/1ba8503fca62c808a54a44d8f8d6ce78dbcf9aa1.jpg?resize=1900%2C470&zoom=1"

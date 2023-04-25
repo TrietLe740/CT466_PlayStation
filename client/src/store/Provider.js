@@ -6,7 +6,10 @@ function Provider({ children }) {
     JSON.parse(window.localStorage.getItem("cartItem")) || []
   );
   const [auth, setAuth] = useState(
-    JSON.parse(window.localStorage.getItem("auth")) || {}
+    JSON.parse(window.localStorage.getItem("auth")) || null
+  );
+  const [admin, setAdmin] = useState(
+    JSON.parse(window.localStorage.getItem("admin")) || null
   );
 
   const [isLogin, setIsLogin] = useState(false);
@@ -27,12 +30,26 @@ function Provider({ children }) {
 
   useEffect(() => {
     window.localStorage.setItem("auth", JSON.stringify(auth) || "");
-    setIsLogin(!!Object.keys(auth).length);
+    setIsLogin(!!auth);
   }, [auth]);
+
+  useEffect(() => {
+    window.localStorage.setItem("admin", JSON.stringify(admin) || "");
+    // setIsLogin(!!admin);
+  }, [admin]);
 
   return (
     <Context.Provider
-      value={{ cart, setCart, auth, setAuth, isLogin, setIsLogin }}
+      value={{
+        cart,
+        setCart,
+        auth,
+        setAuth,
+        admin,
+        setAdmin,
+        isLogin,
+        setIsLogin,
+      }}
     >
       {children}
     </Context.Provider>

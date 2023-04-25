@@ -8,11 +8,12 @@ class GamesService {
   extractGamesData(payload) {
     const game = {
       name: payload.name,
-      price: payload.price,
-      sale: payload.sale,
-      type: payload.type,
+      price: parseInt(payload.price) || 0,
+      sale: parseInt(payload.sale) || 0,
+      type: payload.type || "game",
       img: payload.img,
-      more: payload.more,
+      description: payload.description,
+      more: payload.more || {},
     };
 
     Object.keys(game).forEach(
@@ -22,7 +23,7 @@ class GamesService {
   }
 
   async create(payload) {
-    const game = this.extractGameData(payload);
+    const game = this.extractGamesData(payload);
     const result = await this.Game.findOneAndUpdate(
       game,
       { $set: {} },

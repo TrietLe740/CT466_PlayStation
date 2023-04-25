@@ -23,6 +23,27 @@ exports.login = async (req, res, next) => {
   }
 };
 
+exports.adminLogin = async (req, res, next) => {
+  if (req.body) {
+    try {
+      const authService = new AuthService(MongoDB.client);
+      const document = await authService.findByEmail(req.body.email);
+      console.log(document);
+      if (!document.length || document[0].role !== "admin") {
+        return next(new ApiError(404, "User not found"));
+      }
+      if (document[0].password != req.body.password) {
+        return next(new ApiError(403, "Password invalid"));
+      }
+      return res.status(200).send(document);
+    } catch (error) {
+      return next(
+        new ApiError(500, `Error retrieving user with email=${req.body.email}`)
+      );
+    }
+  }
+};
+
 exports.register = async (req, res, next) => {
   if (!req.body) {
     return next(new ApiError(400, "Email can not be empty !"));
