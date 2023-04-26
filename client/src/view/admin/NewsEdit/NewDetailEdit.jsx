@@ -1,33 +1,33 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import AuthService from "../../../services/auth.service";
+import NewsService from "../../../services/new.service";
 import { useForm } from "react-hook-form";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
-function UserDetailEdit() {
+function NewDetailEdit() {
   const {
-    register,
+    // register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
-  let userId = useParams();
+  let productId = useParams();
 
-  const authServ = new AuthService();
+  const newServ = new NewsService();
 
-  const [user, setUser] = useState();
+  const [post, setPost] = useState();
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
 
   async function getProduct() {
-    let item = await authServ.get(userId.id);
-    setUser(item);
+    let item = await newServ.get(productId.id);
+    setPost(item);
   }
 
-  function updateUser(payload) {
+  function updateProduct(payload) {
     console.log(payload);
-    setUser((state) => {
+    setPost((state) => {
       return {
         ...state,
         ...payload,
@@ -37,8 +37,8 @@ function UserDetailEdit() {
 
   const handleUpdate = async (id, data) => {
     try {
-      await authServ.update(userId.id, user);
-      // console.log(user);
+      await newServ.update(productId.id, post);
+      // console.log(post);
       alert("Update succesfully!");
     } catch (error) {
       console.log(error);
@@ -48,7 +48,7 @@ function UserDetailEdit() {
   const handleDelete = async (id) => {
     console.log(id);
     try {
-      await authServ.delete(id);
+      await newServ.delete(id);
     } catch (error) {
       console.log(error);
     }
@@ -61,74 +61,60 @@ function UserDetailEdit() {
   }, []);
 
   return (
-    <div className="row product_edit_container">
-      <div className="col-6 p-5">
-        <h2>User Information:</h2>
-        <div className="row">
-          <div className="user-detail-right col-6">
-            <p>User ID: {user?._id}</p>
-            <p>Name: {user?.name}</p>
-            <p>Email: {user?.email}</p>
-            <p>Password: {user?.password}</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="col-6 p-5">
-        <h2>Edit:</h2>
+    <div className="product_edit_container">
+      <div className="p-5">
+        <h2>Edit Post</h2>
         <form
           onSubmit={handleSubmit((data) => {
-            handleUpdate(userId.id, data);
+            handleUpdate(productId.id, data);
           })}
         >
           <div className="form-group">
-            <label htmlFor="name">User Name</label>
+            <label htmlFor="name">Title</label>
             <input
-              {...register("name", { required: "*This is require" })}
               className="form-control"
               type="text"
-              name="name"
-              value={user?.name}
+              name="title"
+              value={post?.title}
               onChange={(e) => {
-                updateUser({ name: e.target.value });
+                updateProduct({ title: e.target.value });
               }}
             />
-            <p className="warning">{errors.name?.message}</p>
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="thumbnail">Thumbnail</label>
             <input
-              {...register("email", { required: "*This is require" })}
-              className="form-control"
-              type="email"
-              name="email"
-              value={user?.email}
-              onChange={(e) => {
-                updateUser({ email: e.target.value });
-              }}
-            />
-            <p className="warning">{errors.email?.message}</p>
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              {...register("password", {
-                minLength: {
-                  value: 5,
-                  message: "*Min length is 5",
-                },
-              })}
               className="form-control"
               type="text"
-              name="password"
-              value={user?.password}
+              name="thumbnail"
+              value={post?.thumbnail}
               onChange={(e) => {
-                updateUser({ password: e.target.value });
+                updateProduct({ thumbnail: e.target.value });
               }}
             />
-            {errors.password && (
-              <p className="text-danger">{errors.password.message}</p>
-            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="background">Background</label>
+            <input
+              className="form-control"
+              type="text"
+              name="background"
+              value={post?.background}
+              onChange={(e) => {
+                updateProduct({ background: e.target.value });
+              }}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="content">Content</label>
+            <textarea
+              className="form-control"
+              name="content"
+              value={post?.content}
+              onChange={(e) => {
+                updateProduct({ content: e.target.value });
+              }}
+            ></textarea>
           </div>
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
@@ -146,14 +132,14 @@ function UserDetailEdit() {
               {(close) => (
                 <div className="popup-register">
                   <p className="text-success">
-                    Are you sure to delete this user?
+                    Are you sure to delete this post?
                   </p>
                   <p className="row p-3">
                     <Link
-                      to={`/admin/users`}
+                      to={`/admin/news`}
                       className="btn col-4 bg-danger border-danger text-white"
                       onClick={() => {
-                        handleDelete(user?._id);
+                        handleDelete(post?._id);
                       }}
                     >
                       Sure
@@ -172,4 +158,4 @@ function UserDetailEdit() {
   );
 }
 
-export default UserDetailEdit;
+export default NewDetailEdit;

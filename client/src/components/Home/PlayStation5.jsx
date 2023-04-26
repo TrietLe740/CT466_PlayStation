@@ -16,7 +16,10 @@ export default function PlayStation5() {
           </span>
         </div>
         <div className="ads-playstation5-btn">
-          <a href="/#" alt="">
+          <a
+            href="http://localhost:3000/product/hardware/6446bfecfab100f5be2b531f"
+            alt=""
+          >
             Learn more
           </a>
         </div>

@@ -24,6 +24,7 @@ function AdminHeader() {
           <Link to={`/admin/users`}>Users</Link>
           <Link to={`/admin/hardwares`}>Hardwares</Link>
           <Link to={`/admin/games`}>Games</Link>
+          <Link to={`/admin/news`}>News</Link>
           <Link to={`/admin/invoices`}>Invoices</Link>
         </div>
         <div className="action">

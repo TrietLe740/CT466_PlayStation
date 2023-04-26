@@ -23,7 +23,7 @@ function ProductDetail() {
 
   async function getProduct() {
     var item;
-    if (productId.type === "hardware") {
+    if (productId.type === "hardware" || productId.type === "accessory") {
       item = await playstationServ.get(productId.id);
     } else if (productId.type === "game") {
       item = await gamesServ.get(productId.id);
@@ -73,7 +73,7 @@ function ProductDetail() {
           <span className="price display-3 h3">
             {product?.price - product?.sale || ""}$
           </span>
-          <p>{product?.discription}</p>
+          <p>{product?.description}</p>
           <br />
           <button
             className="btn-border pt-2 pb-2 pl-3 pr-3"

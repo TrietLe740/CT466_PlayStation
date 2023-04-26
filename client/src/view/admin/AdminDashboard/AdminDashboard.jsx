@@ -56,6 +56,16 @@ function AdminDashboard() {
       </div>
       <div className="admin-card-icon">
         <div className="admin-card-icon-body">
+          <Link to={`/admin/news`}>
+            <div className="admin-card-icon-i">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+            <h3>News</h3>
+          </Link>
+        </div>
+      </div>
+      <div className="admin-card-icon">
+        <div className="admin-card-icon-body">
           <Link to={`/admin/invoices`}>
             <div className="admin-card-icon-i">
               <i className="fa-solid fa-cart-shopping"></i>
@@ -66,7 +76,7 @@ function AdminDashboard() {
       </div>
       <div className="table">
         <div className="table-head">
-          <h3 className="font-weight-bold">Top sản phẩm</h3>
+          <h3 className="font-weight-bold">Products</h3>
         </div>
         <div className="table-body">
           <div className="table-responsive">
@@ -92,9 +102,9 @@ function AdminDashboard() {
                                 <i className="fa fa-pencil"></i>
                               </Link>
                             </button>
-                            <button>
+                            {/* <button>
                               <i className="fa fa-trash"></i>
-                            </button>
+                            </button> */}
                           </div>
                         </td>
                       </tr>
@@ -110,19 +120,19 @@ function AdminDashboard() {
           <div className="icon">
             <i className="fa fa-users"></i>
           </div>
-          <div className="num">1000 User</div>
+          <div className="num">User</div>
         </div>
         <div className="admin-card">
           <div className="icon">
             <i className="fa fa-copy"></i>
           </div>
-          <div className="num">3400 Product</div>
+          <div className="num">Product</div>
         </div>
         <div className="admin-card">
           <div className="icon">
             <i className="fa fa-shopping-bag"></i>
           </div>
-          <div className="num">2000 Invoice</div>
+          <div className="num">Invoice</div>
         </div>
       </div>
     </div>

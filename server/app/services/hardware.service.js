@@ -44,9 +44,11 @@ class HardwareService {
   }
 
   async findByName(name) {
-    return await this.find({
+    console.log(name);
+    const cursor = await this.Hardware.find({
       name: { $regex: new RegExp(name), $options: "i" },
     });
+    return await cursor.toArray();
   }
 
   async findById(id) {

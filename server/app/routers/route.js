@@ -1,8 +1,10 @@
 const express = require("express");
 const hardwares = require("../controllers/hardware.controller");
 const games = require("../controllers/games.controller");
+const news = require("../controllers/news.controller");
 const invoice = require("../controllers/invoice.controller");
 const auth = require("../controllers/auth.controller");
+const search = require("../controllers/search.controller");
 
 const router = express.Router();
 
@@ -30,6 +32,14 @@ router
   .put(games.update)
   .delete(games.delete);
 
+router.route("/news").get(news.findAll).post(news.create).delete(news.delete);
+
+router
+  .route("/news/:id")
+  .get(news.findOne)
+  .put(news.update)
+  .delete(news.delete);
+
 router.route("/invoices").get(invoice.findAll).post(invoice.create);
 
 router
@@ -45,5 +55,13 @@ router.post("/user/adminLogin", auth.adminLogin);
 router.post("/user/register", auth.register);
 
 router.get("/user/findAllUser", auth.findAll);
+
+router
+  .route("/user/:id")
+  .get(auth.findOne)
+  .put(auth.update)
+  .delete(auth.delete);
+
+router.route("/search").get(search.search);
 
 module.exports = router;

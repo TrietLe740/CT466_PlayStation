@@ -44,9 +44,11 @@ class GamesService {
   }
 
   async findByName(name) {
-    return await this.find({
+    console.log(name);
+    const cursor = await this.Game.find({
       name: { $regex: new RegExp(name), $options: "i" },
     });
+    return await cursor.toArray();
   }
 
   async findById(id) {

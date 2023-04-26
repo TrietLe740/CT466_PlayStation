@@ -5,11 +5,11 @@ import "../../view/main/PlayStation/playstation.css";
 export default function HardwareCard({ hardware }) {
   return (
     <div className="hardware-card card col-4 m-0">
-      <Link to={`/hardware/`}>
+      <Link to={`/product/${hardware.type}/${hardware._id}`}>
         <img
           src={hardware.img}
           className="card-img-top product-card-img"
-          alt="..."
+          alt=""
         />
       </Link>
       <div className="card-body">

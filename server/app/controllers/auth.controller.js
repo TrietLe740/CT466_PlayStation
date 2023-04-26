@@ -100,3 +100,39 @@ exports.findOne = async (req, res, next) => {
     );
   }
 };
+
+exports.delete = async (req, res, next) => {
+  try {
+    const authService = new AuthService(MongoDB.client);
+    const document = await authService.delete(req.params.id);
+    if (!document) {
+      return next(new ApiError(404, "User not found"));
+    }
+    return res.send({ message: "User was deleted succesfully " });
+  } catch (error) {
+    return next(
+      new ApiError(500, `Could not delete auth with id=${req.params.id}`)
+    );
+  }
+};
+
+exports.update = async (req, res, next) => {
+  console.log(req.body);
+  if (Object.keys(req.body).length === 0) {
+    return next(new ApiError(400, "Data to update can not be empty"));
+  }
+
+  try {
+    const authService = new AuthService(MongoDB.client);
+    const document = await authService.update(req.params.id, req.body);
+    if (!document) {
+      return next(new ApiError(404, "User not found"));
+    }
+    return res.send({ message: "User was updated succesfully" });
+  } catch (error) {
+    console.log(error);
+    return next(
+      new ApiError(500, `Error updating auth with id=${req.params.id}`)
+    );
+  }
+};
